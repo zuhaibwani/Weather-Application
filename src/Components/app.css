@@ -51,16 +51,17 @@ body{
     background: #cbe1e9;
 }
 .box {
-    width: 27vw;
-    height: 60vh;
+    width: 25vw;
+    height: 75vh;
     border-radius: 3.5rem;
     box-shadow: 0 0.2rem 3rem rgba(0, 0, 0, 0.2);
     background: #050d4a;
     position: relative;
     overflow: hidden;
     transform: translate3d(0, 0, 0);
-    min-width: 24rem;
-    min-height: 35rem;
+    min-width: 22rem;
+    min-height: 30rem;
+    margin: 0rem 3rem;
 }
 
 .wave {
@@ -265,6 +266,7 @@ body > span {
     height: 5vh;
     font-size: 1rem;
     color: white;
+    flex-wrap: wrap;
 }
 
 
