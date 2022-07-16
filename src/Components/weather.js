@@ -1,10 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
+// import { BsFillCloudRainHeavyFill, BsSun,BsFillCloudyFill } from "react-icons/bs";
+// import { AiFillThunderbolt } from "react-icons/ai";
 import "./app.css"
 
 function WeatherApp() {
   const [apiData,setApiData] = useState(null)
   const [search, setSearch] = useState("Delhi")
+  const [myWeather, setWeather] = useState("")
+
   
   useEffect(() => {
     async function getData(){
@@ -12,13 +16,29 @@ function WeatherApp() {
         const res = await fetch(url)
         const data = await res.json()
         setApiData(data.main)
+        setWeather(data.weather)
         console.log(data.main)
+        console.log(data.weather)
     }
     getData()
   },[search])
   
   
-  
+
+  // <span className="ani">{rCs(myWeather[0].main)}</span>
+  // const rCs = (currWeather)=>{
+  //   let animation = <BsSun/>
+  //   if(currWeather=== "Clouds"){
+  //     animation = <BsFillCloudyFill/>
+  //   } else if(currWeather=== "Rain"){
+  //     animation = <BsFillCloudRainHeavyFill/>
+  //   }  else if(currWeather=== "Thunderstorm"){
+  //     animation = <AiFillThunderbolt/>
+  //   }   
+  //   return animation
+  // }
+  // https://openweathermap.org/img/w/50n.png
+  let icon = `https://openweathermap.org/img/w/${myWeather[0].icon}.png`
   return (
     <>
     <div className="container">
@@ -29,7 +49,16 @@ function WeatherApp() {
           type="search"
           className="inputField"
           placeholder="Enter City Name"
-          onChange={(event)=> { setSearch(event.target.value) }}/> 
+          onChange={(event)=> {
+            // setSearch(event.target.value)
+            //   console.log(search)
+            setTimeout(()=>{
+              setSearch(event.target.value)
+              // console.log(search)
+            },3000)
+            
+           }}/> 
+           
         </div>
           {!apiData ? (
           <p className="notFound"> No Data Found </p> 
@@ -39,9 +68,10 @@ function WeatherApp() {
                 <h2 className="location">
                 <i  className="fa-solid fa-location-dot locationIcon"></i>{search}
                 </h2>
+                <h4 className="myWeather"><img src={icon} alt="pdd" ></img>{myWeather[0].main}</h4>
                 <h1 className="temp">{apiData.temp} °Cel </h1>
                 <h3 className="tempmin_max"> Min: {apiData.temp_min}°Cel | Max: {apiData.temp_max} °Cel </h3>
-                <h4 className="humidity">Humidity : {apiData.humidity}</h4>
+                
             </div>
             
               <div className="wave -one"></div> 

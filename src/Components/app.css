@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital@1&display=swap');
 
 * {
     margin: 0;
@@ -31,8 +32,10 @@
     justify-content: center;
     margin: 1rem 0rem;
     flex-wrap: wrap;
-    height: 80vh;
-    width: 100vw;
+    flex-shrink: inherit;
+    /* height: 74vh; */
+    height: 100%;
+    width: 100%;
     font-family: "Jost", sans-serif;
 }
 .locationIcon{
@@ -51,12 +54,15 @@ body{
     background: #cbe1e9;
 }
 .box {
+    display: flex;
+    flex-direction: column;
     width: 25vw;
-    height: 75vh;
+    height: 76vh;
+    /* height: 100%; */
     border-radius: 3.5rem;
     box-shadow: 0 0.2rem 3rem rgba(0, 0, 0, 0.2);
     background: #050d4a;
-    position: relative;
+    position: static;
     overflow: hidden;
     transform: translate3d(0, 0, 0);
     min-width: 22rem;
@@ -119,15 +125,15 @@ body{
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 60vh;
+    height: 55vh;
     z-index: 4;
 }
 
 .location {
-    margin-top: -2.5rem;
+    margin-top: 0.5rem;
     text-align: center;
     font-weight: 800;
-    font-size: 5rem;
+    font-size: 4rem;
     text-transform: capitalize;
 }
 
@@ -191,8 +197,8 @@ body{
 
 @media (max-width: 600px) {
     .box {
-        width: 90vw;
-        height: 80vh;
+        /* width: 90vw; */
+        /* height: 72vh; */
     }
 
     .wave {
@@ -209,20 +215,21 @@ body{
 }
 
 @media (max-width: 500px) {
-    .box {
-        height: 80vh;
-    }
+    /* .box {
+        height: 72vh;
+    } */
+    
 
     .wave {
         top: 115%;
     }
 }
 
-body > span {
+/* body > span {
     width: 100vw;
     text-align: center;
     color: grey;
-}
+} */
 
 .inputData {
     width: 100%;
@@ -251,10 +258,11 @@ body > span {
     margin: 2rem auto;
 } */
 
-.humidity, .notFound{
+
+.notFound{
     margin-top: 1.5rem;
     text-align: center;
-    font-size: 1rem;
+    font-size: 2rem;
 }
 
 .footer{
@@ -262,11 +270,37 @@ body > span {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    /* width: 100%; */
     height: 5vh;
     font-size: 1rem;
     color: white;
     flex-wrap: wrap;
+    flex-shrink: inherit;
+    padding: 1rem;
+}
+
+.ani{
+    font-size: 4rem;
+    margin-right: 1rem;
+    
+}
+.myWeather{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 2rem;
+    /* font-weight: bold; */
+    /* color: #d4b51d; */
+    color: rgb(0, 0, 0);
+    background-color: #269cc6;
+    /* border: 3px solid black; */
+    border-radius: 6rem;
+    padding: 0rem 1.5rem;
+}
+
+.myWeather img{
+    height: 4.5rem;
+    width: 5rem;
 }
 
 
