@@ -1,14 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import { BsFillCloudRainHeavyFill, BsSun,BsFillCloudyFill } from "react-icons/bs";
-// import { AiFillThunderbolt } from "react-icons/ai";
+import { BsFillCloudRainHeavyFill, BsSun, BsFillCloudyFill, BsCloudHaze2Fill } from "react-icons/bs";
+import { AiFillThunderbolt } from "react-icons/ai";
+import { RiMistFill } from "react-icons/ri";
 import "./app.css"
 
 function WeatherApp() {
   const [apiData,setApiData] = useState(null)
   const [search, setSearch] = useState("Delhi")
-  const [myWeather, setWeather] = useState("")
-
+  const [myWeather, setWeather] = useState([])
   
   useEffect(() => {
     async function getData(){
@@ -17,28 +17,32 @@ function WeatherApp() {
         const data = await res.json()
         setApiData(data.main)
         setWeather(data.weather)
+        // setIcon(data.weather[0].icon)
+        // let iconURL = `https://openweathermap.org/img/w/${icon}.png`
         console.log(data.main)
         console.log(data.weather)
     }
     getData()
+    
   },[search])
   
   
-
-  // <span className="ani">{rCs(myWeather[0].main)}</span>
-  // const rCs = (currWeather)=>{
-  //   let animation = <BsSun/>
-  //   if(currWeather=== "Clouds"){
-  //     animation = <BsFillCloudyFill/>
-  //   } else if(currWeather=== "Rain"){
-  //     animation = <BsFillCloudRainHeavyFill/>
-  //   }  else if(currWeather=== "Thunderstorm"){
-  //     animation = <AiFillThunderbolt/>
-  //   }   
-  //   return animation
-  // }
-  // https://openweathermap.org/img/w/50n.png
-  let icon = `https://openweathermap.org/img/w/${myWeather[0].icon}.png`
+  const rCs = (currWeather)=>{
+    let animation = <BsSun/>
+    if(currWeather=== "Clouds"){
+      animation = <BsFillCloudyFill/>
+    } else if(currWeather=== "Rain"){
+      animation = <BsFillCloudRainHeavyFill/>
+    }  else if(currWeather=== "Thunderstorm"){
+      animation = <AiFillThunderbolt/>
+    }   else if(currWeather=== "Mist"){
+      animation = <RiMistFill/>
+    } else if(currWeather=== "Haze"){
+      animation = <BsCloudHaze2Fill/>
+    }  
+    return animation
+  }
+  
   return (
     <>
     <div className="container">
@@ -54,7 +58,6 @@ function WeatherApp() {
             //   console.log(search)
             setTimeout(()=>{
               setSearch(event.target.value)
-              // console.log(search)
             },3000)
             
            }}/> 
@@ -68,7 +71,7 @@ function WeatherApp() {
                 <h2 className="location">
                 <i  className="fa-solid fa-location-dot locationIcon"></i>{search}
                 </h2>
-                <h4 className="myWeather"><img src={icon} alt="pdd" ></img>{myWeather[0].main}</h4>
+                <h4 className="myWeather"><span className="ani">{rCs(myWeather[0].main)}</span>{myWeather[0].main}</h4>
                 <h1 className="temp">{apiData.temp} °Cel </h1>
                 <h3 className="tempmin_max"> Min: {apiData.temp_min}°Cel | Max: {apiData.temp_max} °Cel </h3>
                 

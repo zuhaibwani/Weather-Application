@@ -280,8 +280,9 @@ body{
 }
 
 .ani{
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-right: 1rem;
+    padding-top: 1rem;
     
 }
 .myWeather{
@@ -290,12 +291,12 @@ body{
     text-align: center;
     font-size: 2rem;
     /* font-weight: bold; */
-    /* color: #d4b51d; */
-    color: rgb(0, 0, 0);
+    color: #d4b51d;
+    /* color: rgb(0, 0, 0); */
     background-color: #269cc6;
     /* border: 3px solid black; */
     border-radius: 6rem;
-    padding: 0rem 1.5rem;
+    padding: 0rem 2rem;
 }
 
 .myWeather img{
