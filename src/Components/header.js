@@ -11,7 +11,7 @@ export default function Header() {
           <svg
             stroke="currentColor"
             fill="currentColor"
-            stroke-width="0"
+            strokeWidth="0"
             viewBox="0 0 640 512"
             height="4rem"
             width="4rem"
