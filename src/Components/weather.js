@@ -23,7 +23,7 @@ function WeatherApp() {
         console.log(data.weather)
     }
     getData()
-    
+    console.log(search)
   },[search])
   
   
